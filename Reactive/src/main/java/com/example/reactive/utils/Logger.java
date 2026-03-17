@@ -41,7 +41,7 @@ public class Logger {
     }
 
     public static void onComplete() {
-        log.error("# onComplete()");
+        log.info("# onComplete()");
     }
 
     public static void onComplete(Object data) {
