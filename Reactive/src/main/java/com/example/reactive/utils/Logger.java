@@ -28,6 +28,14 @@ public class Logger {
         log.info("# doOnRequest(): {}", data);
     }
 
+    public static void doOnTerminate(Object data) {
+        log.info("# doOnTerminate(): {}", data);
+    }
+
+    public static void doAfterTerminate(Object data) {
+        log.info("# doAfterTerminate(): {}", data);
+    }
+
     public static void onNext(Object data) {
         log.info("# onNext(): {}", data);
     }
