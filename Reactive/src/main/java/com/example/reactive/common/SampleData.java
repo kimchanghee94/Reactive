@@ -5,12 +5,12 @@ import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 예제 코드에 사용하는 샘플 데이터
+ */
 public class SampleData {
     public static final List<String> coinNames = Arrays.asList("BTC", "ETH", "XRP", "ICX", "EOS", "BCH");
     public static final List<Integer> btcPrices =
@@ -124,6 +124,31 @@ public class SampleData {
     }
 
 
+    public static final List<Book> books =
+            Arrays.asList(
+                    new Book(1, "Advance Java", "Tom", "Tom-boy", 25000, 100),
+                    new Book(2, "Advance Python", "Grace", "Grace-girl", 22000, 150),
+                    new Book(3, "Advance Reactor", "Smith", "David-boy", 35000, 200),
+                    new Book(4, "Getting started Java", "Tom", "Tom-boy", 32000, 230),
+                    new Book(5, "Advance Kotlin", "Kevin", "Kevin-boy", 32000, 250),
+                    new Book(6, "Advance Javascript", "Mike", "Tom-boy", 32000, 320),
+                    new Book(7, "Getting started Kotlin", "Kevin", "Kevin-boy", 32000, 150),
+                    new Book(8, "Getting started Python", "Grace", "Grace-girl", 32000, 200),
+                    new Book(9, "Getting started Reactor", "Smith", null, 32000, 250),
+                    new Book(10, "Getting started Javascript", "Mike", "David-boy", 32000, 330)
+            );
+
+    public static Book findBookById(int bookId) {
+        return books.stream()
+                .filter(book -> book.getBookId() == bookId)
+                .findFirst().orElseThrow(() -> new RuntimeException("Not found book"));
+    }
+
+    public static final List<Integer> monthlyBookSales2021 =
+            Arrays.asList(2_500_000, 3_200_000, 2_300_000, 4_500_000,
+                    6_500_000, 5_500_000, 3_100_000, 2_000_000,
+                    2_800_000, 4_100_000, 6_200_000, 4_200_000);
+
     public enum CoronaVaccine {
         Pfizer,
         AstraZeneca,
@@ -133,11 +158,11 @@ public class SampleData {
 
         public static List<CoronaVaccine> toList() {
             return Arrays.asList(
-                    CoronaVaccine.Pfizer,
-                    CoronaVaccine.AstraZeneca,
-                    CoronaVaccine.Moderna,
-                    CoronaVaccine.Janssen,
-                    CoronaVaccine.Novavax
+                    Pfizer,
+                    AstraZeneca,
+                    Moderna,
+                    Janssen,
+                    Novavax
             );
         }
     }
